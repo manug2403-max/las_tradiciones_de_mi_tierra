@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubre los sabores tradicionales de Manabí en Las Tradiciones de mi Tierra, Portoviejo, Ecuador.">
+  <meta name="theme-color" content="#286b46">
+  <title>Las Tradiciones de mi Tierra | Menú digital</title>
+  <style>
+    /* =========================================================
+       1. COLORES: cambia estos valores para actualizar la marca
+       ========================================================= */
+    :root {
+      --verde: #286b46;
+      --verde-oscuro: #194b32;
+      --celeste: #48a9cf;
+      --amarillo: #f2c638;
+      --marron: #70401f;
+      --crema: #fffaf0;
+      --blanco: #ffffff;
+      --texto: #35291f;
+      --texto-suave: #75695e;
+      --sombra: 0 12px 35px rgba(75, 49, 25, .10);
+      --radio: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      color: var(--texto);
+      background: var(--crema);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .contenedor { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    /* ENCABEZADO */
+    .encabezado {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 250, 240, .96);
+      border-bottom: 1px solid rgba(112, 64, 31, .12);
+      backdrop-filter: blur(12px);
+    }
+    .barra {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .marca {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+      min-width: 0;
+    }
+    /* LOGOTIPO: coloca el archivo logo.png junto a index.html */
+    .marca img {
+      width: 62px;
+      height: 62px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: var(--blanco);
+    }
+    .marca-nombre {
+      color: var(--marron);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+    .marca-nombre span { display: block; color: var(--verde); font-size: .78rem; font-family: Arial, sans-serif; font-weight: 600; margin-top: 4px; }
+    .navegacion { display: flex; align-items: center; gap: 25px; }
+    .navegacion a {
+      text-decoration: none;
+      font-size: .93rem;
+      font-weight: 700;
+      color: var(--texto);
+    }
+    .navegacion a:hover { color: var(--verde); }
+
+    /* BIENVENIDA */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 82px 0 88px;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(242,198,56,.28), transparent 25%),
+        radial-gradient(circle at 8% 90%, rgba(72,169,207,.18), transparent 28%),
+        linear-gradient(135deg, #fff8e7 0%, #f5edda 55%, #e9f3e8 100%);
+    }
+    .hero::after {
+      content: "❧";
+      position: absolute;
+      right: 3%;
+      bottom: -95px;
+      color: rgba(40,107,70,.08);
+      font-size: 21rem;
+      line-height: 1;
+      transform: rotate(-20deg);
+      pointer-events: none;
+    }
+    .hero-contenido { position: relative; z-index: 1; max-width: 760px; }
+    .etiqueta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      color: var(--verde-oscuro);
+      background: rgba(40,107,70,.10);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; }
+    .hero h1 {
+      max-width: 750px;
+      margin: 20px 0 15px;
+      color: var(--marron);
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      line-height: 1.04;
+      letter-spacing: -.04em;
+    }
+    .hero h1 span { color: var(--verde); }
+    .hero p { max-width: 610px; margin: 0; color: #5e5145; font-size: 1.12rem; }
+    .boton {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 28px;
+      padding: 14px 25px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--verde);
+      color: var(--blanco);
+      text-decoration: none;
+      font-weight: 800;
+      box-shadow: 0 8px 18px rgba(40,107,70,.20);
+      transition: transform .2s, background .2s;
+    }
+    .boton:hover { background: var(--verde-oscuro); transform: translateY(-2px); }
+
+    /* TITULOS DE SECCION */
+    .seccion { padding: 76px 0; }
+    .seccion-cabecera { max-width: 680px; margin-bottom: 30px; }
+    .sobrelinea {
+      color: var(--verde);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .seccion h2 {
+      margin: 8px 0 10px;
+      color: var(--marron);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+    }
+    .seccion-cabecera p { margin: 0; color: var(--texto-suave); }
+
+    /* CATEGORIAS Y TARJETAS DE PRODUCTOS */
+    .categoria { margin-top: 42px; }
+    .categoria-titulo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .categoria-titulo h3 { margin: 0; color: var(--verde-oscuro); font-size: 1.55rem; }
+    .categoria-titulo::after { content: ""; height: 1px; flex: 1; background: #dfd3bf; }
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .tarjeta {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 17px;
+      align-items: center;
+      min-height: 156px;
+      padding: 17px;
+      border: 1px solid rgba(112,64,31,.10);
+      border-radius: var(--radio);
+      background: var(--blanco);
+      box-shadow: 0 5px 18px rgba(75,49,25,.045);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .tarjeta:hover { transform: translateY(-3px); box-shadow: var(--sombra); }
+    .producto-icono {
+      display: grid;
+      place-items: center;
+      width: 112px;
+      height: 112px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, #f8e9b9, #e5f0df);
+      font-size: 3.1rem;
+    }
+    .producto-info h4 { margin: 0 0 5px; color: var(--marron); font-family: Georgia, serif; font-size: 1.13rem; line-height: 1.25; }
+    .producto-info p { margin: 0 0 8px; color: var(--texto-suave); font-size: .88rem; line-height: 1.45; }
+    .ingredientes { display: block; margin-bottom: 9px; color: #897b6e; font-size: .76rem; line-height: 1.4; }
+    .precio { color: var(--verde); font-size: 1.15rem; font-weight: 900; }
+    .sello {
+      display: inline-block;
+      margin: 0 0 7px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #fff2c5;
+      color: #76520b;
+      font-size: .68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    /* ESPECIALIDADES */
+    .especialidades { background: #edf4e9; }
+    .especialidades-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .especialidad {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border: 1px solid rgba(40,107,70,.13);
+      border-radius: 24px;
+      background: var(--blanco);
+      box-shadow: var(--sombra);
+    }
+    .especialidad .icono-grande { font-size: 2.5rem; }
+    .especialidad h3 { margin: 10px 0 8px; color: var(--marron); font-size: 1.55rem; }
+    .especialidad p { margin: 0; color: var(--texto-suave); }
+    .especialidad .precio { display: inline-block; margin-top: 15px; }
+
+    /* HISTORIA / CONTACTO */
+    .informacion-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 35px; align-items: start; }
+    .texto-informacion { color: var(--texto-suave); }
+    .datos {
+      padding: 25px;
+      border-radius: var(--radio);
+      background: var(--marron);
+      color: var(--blanco);
+    }
+    .datos h3 { margin: 0 0 14px; color: var(--amarillo); font-size: 1.45rem; }
+    .dato { display: flex; gap: 11px; margin: 12px 0; align-items: flex-start; }
+    .dato strong { display: block; color: #fff4d2; }
+    .nota-precios { margin-top: 25px; color: var(--texto-suave); font-size: .82rem; }
+
+    /* PIE DE PAGINA */
+    footer { padding: 25px 0; background: var(--verde-oscuro); color: rgba(255,255,255,.88); text-align: center; }
+    footer p { margin: 4px 0; font-size: .88rem; }
+    footer strong { color: var(--amarillo); }
+
+    /* ADAPTACION A TABLETAS Y TELEFONOS */
+    @media (max-width: 780px) {
+      .barra { flex-wrap: wrap; justify-content: center; padding: 12px 0; gap: 12px; }
+      .marca { margin-right: auto; }
+      .navegacion { width: 100%; justify-content: center; gap: 22px; padding: 7px 0 3px; }
+      .hero { padding: 65px 0 70px; }
+      .productos { grid-template-columns: 1fr; }
+      .informacion-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .contenedor { width: min(100% - 28px, 1120px); }
+      .marca img { width: 52px; height: 52px; }
+      .marca-nombre { font-size: .93rem; }
+      .navegacion { gap: 16px; }
+      .navegacion a { font-size: .82rem; }
+      .hero { padding: 54px 0 62px; }
+      .hero p { font-size: 1rem; }
+      .seccion { padding: 58px 0; }
+      .tarjeta { grid-template-columns: 84px minmax(0, 1fr); gap: 12px; padding: 12px; }
+      .producto-icono { width: 84px; height: 92px; font-size: 2.5rem; }
+      .producto-info h4 { font-size: 1.02rem; }
+      .producto-info p { font-size: .82rem; }
+      .especialidades-grid { grid-template-columns: 1fr; }
+      .especialidad { padding: 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ENCABEZADO: para cambiar el nombre, modifica el texto de .marca-nombre -->
+  <header class="encabezado">
+    <div class="contenedor barra">
+      <a class="marca" href="#inicio" aria-label="Ir al inicio">
+        <img src="logo.png" alt="Logotipo de Las Tradiciones de mi Tierra">
+        <span class="marca-nombre">Las Tradiciones<br>de mi Tierra
+          <span>Sabores auténticos de Manabí</span>
+        </span>
+      </a>
+      <nav class="navegacion" aria-label="Navegación principal">
+        <a href="#menu">Menú</a>
+        <a href="#especialidades">Especialidades</a>
+        <a href="#nosotros">Nosotros</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- BIENVENIDA -->
+    <section class="hero" id="inicio">
+      <div class="contenedor hero-contenido">
+        <span class="etiqueta">📍 Portoviejo · Manabí · Ecuador</span>
+        <h1>De nuestra tierra a tu mesa, <span>el auténtico sabor de Manabí.</span></h1>
+        <p>Ven a compartir nuestras raíces a través de recetas tradicionales, ingredientes de nuestra tierra y una atención cálida para toda la familia.</p>
+        <a class="boton" href="#menu">Ver menú <span aria-hidden="true">&nbsp;↓</span></a>
+      </div>
+    </section>
+
+    <!-- MENU: para agregar productos, duplica una tarjeta .tarjeta dentro de la categoria correspondiente -->
+    <section class="seccion" id="menu">
+      <div class="contenedor">
+        <div class="seccion-cabecera">
+          <span class="sobrelinea">Nuestra cocina</span>
+          <h2>Un menú con identidad manabita</h2>
+          <p>Recetas que cuentan historias y nos conectan con los sabores de nuestra tierra.</p>
+        </div>
+
+        <div class="categoria">
+          <div class="categoria-titulo"><h3>Entradas y antojitos manabitas</h3></div>
+          <div class="productos">
+            <article class="tarjeta">
+              <div class="producto-icono" aria-hidden="true">🥟</div>
+              <div class="producto-info">
+                <h4>Corviches de la abuela</h4>
+                <p>Crujientes por fuera y suaves por dentro, rellenos de pescado y maní, acompañados de salsa criolla.</p>
+                <span class="ingredientes">Plátano verde · pescado · maní · cebolla · cilantro</span>
+                <!-- PRECIO: modifica el valor que aparece en esta etiqueta -->
+                <span class="precio">$3,50</span>
+                <span class="ingredientes">Porción de 2 unidades</span>
+              </div>
+            </article>
+
+            <article class="tarjeta">
+              <div class="producto-icono" aria-hidden="true">🍃</div>
+              <div class="producto-info">
+                <h4>Bollo sabor manabita</h4>
+                <p>Tradicional preparación de verde y maní con pescado, envuelta en hoja de plátano y cocinada al vapor.</p>
+                <span class="ingredientes">Plátano verde · pescado · maní · cebolla · pimiento</span>
+                <span class="precio">$4,00</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="categoria">
+          <div class="categoria-titulo"><h3>Platos tradicionales de nuestra tierra</h3></div>
+          <div class="productos">
+            <article class="tarjeta">
+              <div class="producto-icono" aria-hidden="true">🍲</div>
+              <div class="producto-info">
+                <h4>Viche tradicional manabita</h4>
+                <p>Una sopa espesa y reconfortante con pescado, maní y vegetales, representativa de nuestra cocina.</p>
+                <span class="ingredientes">Pescado · maní · plátano verde · yuca · choclo · verduras</span>
+                <span class="precio">$6,50</span>
+              </div>
+            </article>
+
+            <article class="tarjeta">
+              <div class="producto-icono" aria-hidden="true">🍗</div>
+              <div class="producto-info">
+                <span class="sello">Especialidad de la casa</span>
+                <h4>Tonga de mi tierra</h4>
+                <p>Arroz con pollo y deliciosa salsa de maní, envuelto en hoja de plátano, conservando su sabor tradicional.</p>
+                <span class="ingredientes">Arroz · pollo · maní · maduro · cebolla · hoja de plátano</span>
+                <span class="precio">$7,00</span>
+              </div>
+            </article>
+
+            <article class="tarjeta">
+              <div class="producto-icono" aria-hidden="true">🐟</div>
+              <div class="producto-info">
+                <h4>Ceviche estilo Jipijapa</h4>
+                <p>Fresco ceviche de pescado acompañado de salsa de maní, cebolla, limón y chifles.</p>
+                <span class="ingredientes">Pescado · maní · limón · cebolla colorada · cilantro · chifles</span>
+                <span class="precio">$7,50</span>
+              </div>
+            </article>
+
+            <article class="tarjeta">
+              <div class="producto-icono" aria-hidden="true">🥘</div>
+              <div class="producto-info">
+                <h4>Cazuela de la costa</h4>
+                <p>Deliciosa preparación horneada de verde, maní y pescado, con el inconfundible sabor de la cocina manabita.</p>
+                <span class="ingredientes">Plátano verde · pescado · maní · cebolla · pimiento</span>
+                <span class="precio">$8,00</span>
+              </div>
+            </article>
+
+            <article class="tarjeta">
+              <div class="producto-icono" aria-hidden="true">🍛</div>
+              <div class="producto-info">
+                <h4>Seco de gallina criolla</h4>
+                <p>Gallina criolla cocinada con aliños tradicionales, servida con arroz, maduro y ensalada fresca.</p>
+                <span class="ingredientes">Gallina criolla · arroz · cebolla · pimiento · tomate · maduro</span>
+                <span class="precio">$7,50</span>
+              </div>
+            </article>
+
+            <article class="tarjeta">
+              <div class="producto-icono" aria-hidden="true">🍤</div>
+              <div class="producto-info">
+                <h4>Arroz marinero de Manabí</h4>
+                <p>Arroz preparado con variedad de mariscos y pescado, acompañado de patacones y limón.</p>
+                <span class="ingredientes">Arroz · camarones · pescado · mariscos · vegetales · patacones</span>
+                <span class="precio">$10,00</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <p class="nota-precios">Los precios son referenciales y pueden variar según los costos de los ingredientes y las porciones.</p>
+      </div>
+    </section>
+
+    <!-- ESPECIALIDADES DE LA CASA -->
+    <section class="seccion especialidades" id="especialidades">
+      <div class="contenedor">
+        <div class="seccion-cabecera">
+          <span class="sobrelinea">Recomendados de la casa</span>
+          <h2>Nuestras especialidades</h2>
+          <p>Dos preparaciones que representan la tradición y los ingredientes característicos de la cocina manabita.</p>
+        </div>
+        <div class="especialidades-grid">
+          <article class="especialidad">
+            <div class="icono-grande" aria-hidden="true">🍃</div>
+            <span class="sello">Especialidad 01</span>
+            <h3>Tonga de mi tierra</h3>
+            <p>Una preparación tradicional de arroz, pollo y salsa de maní envuelta en hoja de plátano. Un plato que evoca la cocina familiar manabita.</p>
+            <span class="precio">$7,00</span>
+          </article>
+          <article class="especialidad">
+            <div class="icono-grande" aria-hidden="true">🍲</div>
+            <span class="sello">Especialidad 02</span>
+            <h3>Viche tradicional manabita</h3>
+            <p>Una sopa emblemática que reúne pescado, maní y productos de nuestra tierra en una receta llena de identidad.</p>
+            <span class="precio">$6,50</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFORMACION DEL RESTAURANTE -->
+    <section class="seccion" id="nosotros">
+      <div class="contenedor informacion-grid">
+        <div>
+          <span class="sobrelinea">Nuestra esencia</span>
+          <h2>Tradición que se comparte</h2>
+          <p class="texto-informacion">En <strong>Las Tradiciones de mi Tierra</strong> celebramos la riqueza gastronómica de Manabí. Queremos que cada visita sea una oportunidad para disfrutar de nuestros sabores, conocer nuestras raíces y compartir en un ambiente familiar, cultural y acogedor.</p>
+          <p class="texto-informacion">Nuestra prioridad es ofrecer una atención cercana y cordial, porque creemos que una buena experiencia también se construye con el buen trato.</p>
+        </div>
+        <aside class="datos">
+          <h3>Visítanos</h3>
+          <div class="dato"><span aria-hidden="true">📍</span><div><strong>Ubicación</strong>Portoviejo, Manabí, Ecuador</div></div>
+          <div class="dato"><span aria-hidden="true">🍽️</span><div><strong>Especialidad</strong>Gastronomía tradicional manabita</div></div>
+          <div class="dato"><span aria-hidden="true">👨‍👩‍👧‍👦</span><div><strong>Ambiente</strong>Familiar, cultural y acogedor</div></div>
+          <div class="dato"><span aria-hidden="true">💚</span><div><strong>Compromiso</strong>Tradición y buen servicio</div></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE DE PAGINA -->
+  <footer>
+    <div class="contenedor">
+      <!-- Para cambiar el nombre del restaurante, actualiza también este texto -->
+      <p><strong>Las Tradiciones de mi Tierra</strong></p>
+      <p>Tradición, cultura y sabor en cada plato.</p>
+      <p>Portoviejo · Manabí · Ecuador</p>
+      <p>© <span id="anio"></span> Las Tradiciones de mi Tierra. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Actualiza automáticamente el año del pie de página.
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
