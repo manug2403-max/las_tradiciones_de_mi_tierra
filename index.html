@@ -257,6 +257,57 @@
     footer p { margin: 4px 0; font-size: .88rem; }
     footer strong { color: var(--amarillo); }
 
+
+    /* FUNCIONES INTERACTIVAS */
+    .herramientas-menu{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:24px 0 12px}
+    .buscador{flex:1 1 230px;min-width:0;padding:13px 16px;border:1px solid #d9cbb8;border-radius:999px;background:#fff;color:var(--texto);font:inherit;outline:none}
+    .buscador:focus{border-color:var(--verde);box-shadow:0 0 0 3px rgba(40,107,70,.12)}
+    .filtros{display:flex;flex-wrap:wrap;gap:8px}
+    .filtro{border:1px solid rgba(40,107,70,.25);border-radius:999px;padding:10px 15px;background:#fff;color:var(--verde-oscuro);font-weight:700;cursor:pointer}
+    .filtro.activo,.filtro:hover{background:var(--verde);color:#fff;border-color:var(--verde)}
+    .tarjeta{position:relative}
+    .agregar{margin-top:11px;border:0;border-radius:999px;padding:9px 13px;background:#edf4e9;color:var(--verde-oscuro);font-weight:800;cursor:pointer}
+    .agregar:hover{background:var(--verde);color:#fff}
+    .sin-resultados{display:none;padding:22px;text-align:center;color:var(--texto-suave);background:#fff;border-radius:16px}
+    .tarjeta.oculta{display:none}
+    .boton-pedido{position:fixed;right:22px;bottom:22px;z-index:40;display:flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:14px 19px;color:#fff;background:var(--marron);box-shadow:0 8px 25px rgba(53,41,31,.25);font:inherit;font-weight:800;cursor:pointer}
+    .contador-pedido{display:inline-grid;place-items:center;min-width:24px;height:24px;padding:0 6px;border-radius:50%;background:var(--amarillo);color:var(--marron);font-size:.8rem}
+    .capa-modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(28,23,18,.58)}
+    .capa-modal.abierto{display:flex}
+    .modal-pedido{width:min(520px,100%);max-height:min(82vh,720px);overflow:auto;padding:24px;border-radius:22px;background:var(--crema);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+    .modal-cabecera{display:flex;justify-content:space-between;align-items:center;gap:15px}
+    .modal-cabecera h2{margin:0;color:var(--marron);font-size:1.65rem}
+    .cerrar-modal{width:38px;height:38px;border:0;border-radius:50%;background:#eee3d4;color:var(--marron);font-size:1.3rem;cursor:pointer}
+    .lista-pedido{margin:18px 0;padding:0;list-style:none}
+    .linea-pedido{display:grid;grid-template-columns:1fr auto;gap:10px;padding:13px 0;border-bottom:1px solid #e3d7c7}
+    .controles-cantidad{display:flex;align-items:center;gap:8px;margin-top:7px}
+    .controles-cantidad button,.quitar{border:1px solid #d9cbb8;border-radius:8px;background:#fff;padding:4px 9px;color:var(--texto);cursor:pointer}
+    .quitar{color:#9c352b}
+    .total-pedido{display:flex;justify-content:space-between;padding:15px 0;border-top:2px solid var(--marron);font-size:1.15rem;font-weight:900}
+    .acciones-pedido{display:flex;flex-wrap:wrap;gap:10px}
+    .accion-modal{flex:1 1 150px;border:0;border-radius:999px;padding:12px 15px;background:var(--verde);color:#fff;font:inherit;font-weight:800;cursor:pointer}
+    .accion-modal.secundaria{background:#e9dfd2;color:var(--marron)}
+    .mensaje-vacio{padding:22px 5px;text-align:center;color:var(--texto-suave)}
+    .aviso{position:fixed;left:50%;bottom:90px;z-index:80;transform:translate(-50%,15px);opacity:0;pointer-events:none;padding:11px 17px;border-radius:999px;background:var(--verde-oscuro);color:#fff;box-shadow:var(--sombra);transition:.25s;text-align:center;width:max-content;max-width:calc(100% - 30px)}
+    .aviso.visible{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:480px){.herramientas-menu{align-items:stretch}.filtros{width:100%}.filtro{flex:1;padding:9px 10px;font-size:.82rem}.boton-pedido{right:14px;bottom:14px;padding:12px 15px}.modal-pedido{padding:19px}}
+
+
+    /* BOTON FLOTANTE DE WHATSAPP */
+    .boton-whatsapp {
+      position: fixed; right: 22px; bottom: 88px; z-index: 41;
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 13px 18px; border: 0; border-radius: 999px;
+      background: #20a85a; color: #fff; text-decoration: none;
+      font-weight: 800; box-shadow: 0 8px 24px rgba(20, 120, 65, .28);
+      transition: transform .2s, background .2s;
+    }
+    .boton-whatsapp:hover { background: #168746; transform: translateY(-2px); }
+    .boton-whatsapp svg { width: 21px; height: 21px; fill: currentColor; flex: 0 0 auto; }
+    @media (max-width: 480px) {
+      .boton-whatsapp { right: 14px; bottom: 78px; padding: 11px 14px; font-size: .9rem; }
+    }
+
     /* ADAPTACION A TABLETAS Y TELEFONOS */
     @media (max-width: 780px) {
       .barra { flex-wrap: wrap; justify-content: center; padding: 12px 0; gap: 12px; }
@@ -326,6 +377,17 @@
           <h2>Un menú con identidad manabita</h2>
           <p>Recetas que cuentan historias y nos conectan con los sabores de nuestra tierra.</p>
         </div>
+
+        <!-- BUSCADOR Y FILTROS DEL MENU -->
+        <div class="herramientas-menu" aria-label="Herramientas para explorar el menú">
+          <input class="buscador" id="buscador" type="search" placeholder="Buscar un plato..." aria-label="Buscar un plato">
+          <div class="filtros" role="group" aria-label="Filtrar productos">
+            <button class="filtro activo" type="button" data-filtro="todos">Todos</button>
+            <button class="filtro" type="button" data-filtro="entradas">Entradas</button>
+            <button class="filtro" type="button" data-filtro="platos">Platos fuertes</button>
+          </div>
+        </div>
+        <p class="sin-resultados" id="sinResultados">No encontramos platos con esa búsqueda. Prueba con otro nombre.</p>
 
         <div class="categoria">
           <div class="categoria-titulo"><h3>Entradas y antojitos manabitas</h3></div>
@@ -471,6 +533,26 @@
     </section>
   </main>
 
+
+  <!-- BOTON DE CONTACTO: abre WhatsApp del negocio con un mensaje inicial -->
+  <a class="boton-whatsapp" href="https://wa.me/593968490698?text=Hola%2C%20quiero%20realizar%20un%20pedido%20en%20Las%20Tradiciones%20de%20mi%20Tierra." target="_blank" rel="noopener noreferrer" aria-label="Contactar a Las Tradiciones de mi Tierra por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.82 11.82 0 0 0 12.1 0C5.56 0 .24 5.32.24 11.86c0 2.09.55 4.13 1.6 5.93L.14 24l6.36-1.67a11.9 11.9 0 0 0 5.6 1.42h.01c6.54 0 11.86-5.32 11.86-11.86 0-3.17-1.23-6.15-3.45-8.41ZM12.1 21.73h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.77.99 1.01-3.68-.23-.38a9.82 9.82 0 0 1-1.51-5.21c0-5.45 4.44-9.89 9.9-9.89a9.82 9.82 0 0 1 7 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.44 9.89-9.89 9.89Zm5.43-7.4c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.5 1.7.64.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
+    Pedir por WhatsApp
+  </a>
+
+  <!-- RESUMEN INTERACTIVO DEL PEDIDO: no procesa pagos -->
+  <button class="boton-pedido" id="abrirPedido" type="button" aria-haspopup="dialog">🛒 Mi pedido <span class="contador-pedido" id="contadorPedido">0</span></button>
+  <div class="capa-modal" id="capaModal" role="dialog" aria-modal="true" aria-labelledby="tituloPedido">
+    <div class="modal-pedido">
+      <div class="modal-cabecera"><h2 id="tituloPedido">Tu pedido</h2><button class="cerrar-modal" id="cerrarPedido" type="button" aria-label="Cerrar">×</button></div>
+      <ul class="lista-pedido" id="listaPedido"></ul>
+      <div class="total-pedido"><span>Total referencial</span><span id="totalPedido">$0,00</span></div>
+      <div class="acciones-pedido"><button class="accion-modal" id="copiarPedido" type="button">Copiar pedido</button><button class="accion-modal secundaria" id="vaciarPedido" type="button">Vaciar pedido</button></div>
+      <p class="ingredientes" style="margin-top:14px">Este resumen ayuda a organizar tu pedido. No realiza pagos ni envía una orden automáticamente.</p>
+    </div>
+  </div>
+  <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
   <!-- PIE DE PAGINA -->
   <footer>
     <div class="contenedor">
@@ -485,6 +567,114 @@
   <script>
     // Actualiza automáticamente el año del pie de página.
     document.getElementById("anio").textContent = new Date().getFullYear();
+
+    // BUSCADOR Y FILTROS: permiten encontrar platos por nombre o categoría.
+    const tarjetas = Array.from(document.querySelectorAll('.tarjeta'));
+    const categorias = Array.from(document.querySelectorAll('.categoria'));
+    const buscador = document.getElementById('buscador');
+    const botonesFiltro = Array.from(document.querySelectorAll('.filtro'));
+    const sinResultados = document.getElementById('sinResultados');
+    const pedido = new Map();
+
+    // AGREGAR PRODUCTOS: toma automáticamente nombre y precio de cada tarjeta.
+    tarjetas.forEach((tarjeta) => {
+      const nombre = tarjeta.querySelector('h4').textContent.trim();
+      const precio = Number(tarjeta.querySelector('.precio').textContent.trim().replace('$','').replace(',','.'));
+      tarjeta.dataset.nombre = nombre;
+      tarjeta.dataset.precio = precio;
+      tarjeta.dataset.categoria = tarjeta.closest('.categoria') === categorias[0] ? 'entradas' : 'platos';
+      const boton = document.createElement('button');
+      boton.type = 'button'; boton.className = 'agregar'; boton.textContent = '＋ Agregar al pedido';
+      boton.addEventListener('click', () => agregarAlPedido(nombre, precio));
+      tarjeta.querySelector('.producto-info').appendChild(boton);
+    });
+
+    // FILTRAR POR TEXTO Y CATEGORÍA.
+    let filtroActual = 'todos';
+    function filtrarMenu() {
+      const termino = buscador.value.trim().toLocaleLowerCase('es');
+      let visibles = 0;
+      tarjetas.forEach(t => {
+        const coincide = (filtroActual === 'todos' || t.dataset.categoria === filtroActual) && t.dataset.nombre.toLocaleLowerCase('es').includes(termino);
+        t.classList.toggle('oculta', !coincide);
+        if (coincide) visibles++;
+      });
+      categorias.forEach(c => c.style.display = Array.from(c.querySelectorAll('.tarjeta')).some(t => !t.classList.contains('oculta')) ? '' : 'none');
+      sinResultados.style.display = visibles ? 'none' : 'block';
+    }
+    buscador.addEventListener('input', filtrarMenu);
+    botonesFiltro.forEach(b => b.addEventListener('click', () => {
+      filtroActual = b.dataset.filtro;
+      botonesFiltro.forEach(x => x.classList.toggle('activo', x === b));
+      filtrarMenu();
+    }));
+
+    // CARRITO LOCAL: permite sumar, restar y eliminar productos del resumen.
+    function agregarAlPedido(nombre, precio) {
+      const item = pedido.get(nombre) || { precio, cantidad: 0 };
+      item.cantidad++; pedido.set(nombre, item); actualizarPedido(); mostrarAviso(nombre + ' agregado al pedido');
+    }
+    function cambiarCantidad(nombre, cambio) {
+      const item = pedido.get(nombre); if (!item) return;
+      item.cantidad += cambio;
+      if (item.cantidad <= 0) pedido.delete(nombre);
+      else pedido.set(nombre, item);
+      actualizarPedido();
+    }
+    function actualizarPedido() {
+      const lista = document.getElementById('listaPedido');
+      lista.replaceChildren();
+      let unidades = 0, total = 0;
+      if (!pedido.size) {
+        const vacio = document.createElement('li'); vacio.className = 'mensaje-vacio';
+        vacio.textContent = 'Todavía no has agregado productos. Explora el menú y selecciona tus favoritos.'; lista.appendChild(vacio);
+      }
+      pedido.forEach((item, nombre) => {
+        unidades += item.cantidad; total += item.precio * item.cantidad;
+        const li = document.createElement('li'); li.className = 'linea-pedido';
+        const info = document.createElement('div');
+        const titulo = document.createElement('strong'); titulo.textContent = nombre;
+        const detalle = document.createElement('div'); detalle.className = 'ingredientes'; detalle.textContent = '$' + item.precio.toFixed(2).replace('.', ',') + ' cada uno';
+        const controles = document.createElement('div'); controles.className = 'controles-cantidad';
+        const menos = document.createElement('button'); menos.type = 'button'; menos.textContent = '−'; menos.setAttribute('aria-label','Quitar una unidad'); menos.addEventListener('click', () => cambiarCantidad(nombre,-1));
+        const cantidad = document.createElement('span'); cantidad.textContent = item.cantidad;
+        const mas = document.createElement('button'); mas.type = 'button'; mas.textContent = '+'; mas.setAttribute('aria-label','Agregar una unidad'); mas.addEventListener('click', () => cambiarCantidad(nombre,1));
+        controles.append(menos,cantidad,mas); info.append(titulo,detalle,controles);
+        const lado = document.createElement('div'); lado.style.textAlign = 'right';
+        const subtotal = document.createElement('strong'); subtotal.textContent = '$' + (item.precio * item.cantidad).toFixed(2).replace('.', ',');
+        const quitar = document.createElement('button'); quitar.type = 'button'; quitar.className = 'quitar'; quitar.textContent = 'Eliminar'; quitar.addEventListener('click', () => { pedido.delete(nombre); actualizarPedido(); });
+        lado.append(subtotal,document.createElement('br'),quitar); li.append(info,lado); lista.appendChild(li);
+      });
+      document.getElementById('contadorPedido').textContent = unidades;
+      document.getElementById('totalPedido').textContent = '$' + total.toFixed(2).replace('.', ',');
+    }
+
+    // ABRIR Y CERRAR LA VENTANA DEL PEDIDO.
+    const capaModal = document.getElementById('capaModal');
+    const abrirPedido = document.getElementById('abrirPedido');
+    const cerrarPedido = document.getElementById('cerrarPedido');
+    function cerrarResumen() { capaModal.classList.remove('abierto'); abrirPedido.focus(); }
+    abrirPedido.addEventListener('click', () => { capaModal.classList.add('abierto'); cerrarPedido.focus(); });
+    cerrarPedido.addEventListener('click', cerrarResumen);
+    capaModal.addEventListener('click', e => { if (e.target === capaModal) cerrarResumen(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && capaModal.classList.contains('abierto')) cerrarResumen(); });
+
+    // COPIAR EL RESUMEN PARA COMPARTIRLO POR WHATSAPP U OTRO MEDIO.
+    document.getElementById('copiarPedido').addEventListener('click', async () => {
+      if (!pedido.size) { mostrarAviso('Agrega al menos un producto antes de copiar.'); return; }
+      const lineas = ['Pedido - Las Tradiciones de mi Tierra','']; let total = 0;
+      pedido.forEach((item,nombre) => { const subtotal = item.precio * item.cantidad; total += subtotal; lineas.push(item.cantidad + ' x ' + nombre + ' - $' + subtotal.toFixed(2)); });
+      lineas.push('','Total referencial: $' + total.toFixed(2));
+      try { await navigator.clipboard.writeText(lineas.join('\n')); mostrarAviso('Pedido copiado. Ya puedes compartirlo.'); }
+      catch (error) { mostrarAviso('No se pudo copiar automáticamente en este navegador.'); }
+    });
+    document.getElementById('vaciarPedido').addEventListener('click', () => { pedido.clear(); actualizarPedido(); mostrarAviso('El pedido se ha vaciado.'); });
+    let temporizadorAviso;
+    function mostrarAviso(mensaje) {
+      const aviso = document.getElementById('aviso'); aviso.textContent = mensaje; aviso.classList.add('visible');
+      clearTimeout(temporizadorAviso); temporizadorAviso = setTimeout(() => aviso.classList.remove('visible'), 2400);
+    }
+    actualizarPedido();
   </script>
 </body>
 </html>
