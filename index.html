@@ -308,6 +308,50 @@
       .boton-whatsapp { right: 14px; bottom: 78px; padding: 11px 14px; font-size: .9rem; }
     }
 
+
+    /* FOTOGRAFIAS REALES DEL MENU Y DE MANABI */
+    .producto-foto {
+      width: 112px; height: 112px; object-fit: cover;
+      border-radius: 16px; background: #e9dfd2;
+    }
+    .galeria-manabi { background: #fff; }
+    .galeria-grid {
+      display: grid; grid-template-columns: 1.25fr 1fr 1fr;
+      gap: 18px; margin-top: 26px;
+    }
+    .foto-region {
+      position: relative; overflow: hidden; min-height: 250px;
+      border-radius: 22px; background: #e9dfd2; box-shadow: var(--sombra);
+    }
+    .foto-region img {
+      width: 100%; height: 100%; min-height: 250px; object-fit: cover;
+      transition: transform .45s ease;
+    }
+    .foto-region:hover img { transform: scale(1.045); }
+    .foto-region figcaption {
+      position: absolute; inset: auto 0 0; padding: 42px 18px 16px;
+      color: #fff; font-weight: 800;
+      background: linear-gradient(transparent, rgba(20,25,20,.78));
+    }
+    .foto-region small { display:block; font-weight: 400; opacity: .9; }
+    .hero-foto {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: .18; mix-blend-mode: multiply;
+    }
+    .hero-contenido { z-index: 2; }
+    .fuente-foto { font-size: .72rem; color: #81766b; margin-top: 5px; }
+    .fuente-foto a { color: inherit; }
+    @media (max-width: 780px) {
+      .galeria-grid { grid-template-columns: 1fr 1fr; }
+      .foto-region:first-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 480px) {
+      .producto-foto { width: 84px; height: 92px; }
+      .galeria-grid { grid-template-columns: 1fr; }
+      .foto-region:first-child { grid-column: auto; }
+      .foto-region, .foto-region img { min-height: 210px; }
+    }
+
     /* ADAPTACION A TABLETAS Y TELEFONOS */
     @media (max-width: 780px) {
       .barra { flex-wrap: wrap; justify-content: center; padding: 12px 0; gap: 12px; }
@@ -352,6 +396,7 @@
       </a>
       <nav class="navegacion" aria-label="Navegación principal">
         <a href="#menu">Menú</a>
+        <a href="#manabi">Manabí</a>
         <a href="#especialidades">Especialidades</a>
         <a href="#nosotros">Nosotros</a>
       </nav>
@@ -361,11 +406,39 @@
   <main>
     <!-- BIENVENIDA -->
     <section class="hero" id="inicio">
+      <img class="hero-foto" src="https://media.viajando.travel/p/700a27b904bb66da66e92bd35289f357/adjuntos/276/imagenes/000/277/0000277125/1200x675/smart/puerto-lopez-los-frailesjpg.jpg" alt="" aria-hidden="true">
       <div class="contenedor hero-contenido">
         <span class="etiqueta">📍 Portoviejo · Manabí · Ecuador</span>
         <h1>De nuestra tierra a tu mesa, <span>el auténtico sabor de Manabí.</span></h1>
         <p>Ven a compartir nuestras raíces a través de recetas tradicionales, ingredientes de nuestra tierra y una atención cálida para toda la familia.</p>
         <a class="boton" href="#menu">Ver menú <span aria-hidden="true">&nbsp;↓</span></a>
+      </div>
+    </section>
+
+
+    <!-- MANABI: fotografias de paisajes, artesania y patrimonio local -->
+    <section class="seccion galeria-manabi" id="manabi">
+      <div class="contenedor">
+        <div class="seccion-cabecera">
+          <span class="sobrelinea">Nuestra tierra, nuestras raíces</span>
+          <h2>Manabí: cultura que se vive</h2>
+          <p>Una provincia de paisajes costeros, oficios tradicionales y una identidad que también se expresa en su gastronomía.</p>
+        </div>
+        <div class="galeria-grid">
+          <figure class="foto-region">
+            <img src="https://media.viajando.travel/p/700a27b904bb66da66e92bd35289f357/adjuntos/276/imagenes/000/277/0000277125/1200x675/smart/puerto-lopez-los-frailesjpg.jpg" alt="Playa Los Frailes en Puerto López, Manabí" loading="lazy">
+            <figcaption>La costa manabita<small>Playa Los Frailes · Puerto López</small></figcaption>
+          </figure>
+          <figure class="foto-region">
+            <img src="https://media.elcomercio.com/wp-content/uploads/2024/12/aa2413c3-5d85-4cac-ae07-00c8e0789da5-682x1024.jpeg" alt="Artesana trabajando el tejido del sombrero de paja toquilla" loading="lazy">
+            <figcaption>Artesanía tradicional<small>Tejido de paja toquilla</small></figcaption>
+          </figure>
+          <figure class="foto-region">
+            <img src="https://www.eltelegrafo.com.ec/media/k2/items/cache/37de46e31eef7a579e0507cdd78bce08_XL.jpg" alt="Centro de Portoviejo y su catedral al atardecer" loading="lazy">
+            <figcaption>Portoviejo<small>Capital de Manabí</small></figcaption>
+          </figure>
+        </div>
+        <p class="fuente-foto">Fotografías referenciales de lugares y expresiones culturales de Manabí. Consulta los créditos y enlaces de origen incluidos en el paquete.</p>
       </div>
     </section>
 
@@ -393,7 +466,7 @@
           <div class="categoria-titulo"><h3>Entradas y antojitos manabitas</h3></div>
           <div class="productos">
             <article class="tarjeta">
-              <div class="producto-icono" aria-hidden="true">🥟</div>
+              <img class="producto-foto" src="https://img.eldiario.ec/upload/2026/03/17161D524C43476D14100F55554940781F171A18534B44701D13-1200x800.webp" alt="Corviches manabitas servidos con salsa criolla" loading="lazy">
               <div class="producto-info">
                 <h4>Corviches de la abuela</h4>
                 <p>Crujientes por fuera y suaves por dentro, rellenos de pescado y maní, acompañados de salsa criolla.</p>
@@ -405,7 +478,7 @@
             </article>
 
             <article class="tarjeta">
-              <div class="producto-icono" aria-hidden="true">🍃</div>
+              <img class="producto-foto" src="https://cloudfront-us-east-1.images.arcpublishing.com/eluniverso/P53JDBJIK5GELDH4SXPC2DOAMY.png" alt="Bollo de pescado envuelto en hoja de plátano" loading="lazy">
               <div class="producto-info">
                 <h4>Bollo sabor manabita</h4>
                 <p>Tradicional preparación de verde y maní con pescado, envuelta en hoja de plátano y cocinada al vapor.</p>
@@ -420,7 +493,7 @@
           <div class="categoria-titulo"><h3>Platos tradicionales de nuestra tierra</h3></div>
           <div class="productos">
             <article class="tarjeta">
-              <div class="producto-icono" aria-hidden="true">🍲</div>
+              <img class="producto-foto" src="https://www.eltelegrafo.com.ec/media/k2/items/cache/9556ece2bed859103509f127514854c1_L.jpg" alt="Viche tradicional manabita de pescado" loading="lazy">
               <div class="producto-info">
                 <h4>Viche tradicional manabita</h4>
                 <p>Una sopa espesa y reconfortante con pescado, maní y vegetales, representativa de nuestra cocina.</p>
@@ -430,7 +503,7 @@
             </article>
 
             <article class="tarjeta">
-              <div class="producto-icono" aria-hidden="true">🍗</div>
+              <img class="producto-foto" src="https://cdn.adventure-life.com/39/03/45/TONGA/index.webp" alt="Tonga manabita envuelta en hoja de plátano" loading="lazy">
               <div class="producto-info">
                 <span class="sello">Especialidad de la casa</span>
                 <h4>Tonga de mi tierra</h4>
@@ -441,7 +514,7 @@
             </article>
 
             <article class="tarjeta">
-              <div class="producto-icono" aria-hidden="true">🐟</div>
+              <img class="producto-foto" src="https://www.eluniverso.com/resizer/v2/BEC54UVDBVGRVAJTHBDIB6OXXU.jpg?auth=6ee4a95f1b6308ae7a0bcfcaccc9856122e3bfe39caad353658c8a799e89f4be&height=670&quality=75&smart=true&width=1087" alt="Ceviche estilo Jipijapa con salsa de maní" loading="lazy">
               <div class="producto-info">
                 <h4>Ceviche estilo Jipijapa</h4>
                 <p>Fresco ceviche de pescado acompañado de salsa de maní, cebolla, limón y chifles.</p>
@@ -451,7 +524,7 @@
             </article>
 
             <article class="tarjeta">
-              <div class="producto-icono" aria-hidden="true">🥘</div>
+              <img class="producto-foto" src="https://www.lahora.com.ec/__export/1744686299045/sites/lahora/img/2025/04/14/20250414_090458626_Festival_de_comida_manabita_en_Quitox_el_sxbado_12_de_octubre_de_2024.jpg" alt="Cazuela manabita de pescado" loading="lazy">
               <div class="producto-info">
                 <h4>Cazuela de la costa</h4>
                 <p>Deliciosa preparación horneada de verde, maní y pescado, con el inconfundible sabor de la cocina manabita.</p>
@@ -461,7 +534,7 @@
             </article>
 
             <article class="tarjeta">
-              <div class="producto-icono" aria-hidden="true">🍛</div>
+              <img class="producto-foto" src="https://img.eldiario.ec/upload/2025/03/17161D514C43476D17100F55574944711F131618554B4374-2000x1125.jpg" alt="Seco de gallina criolla con arroz" loading="lazy">
               <div class="producto-info">
                 <h4>Seco de gallina criolla</h4>
                 <p>Gallina criolla cocinada con aliños tradicionales, servida con arroz, maduro y ensalada fresca.</p>
@@ -471,7 +544,7 @@
             </article>
 
             <article class="tarjeta">
-              <div class="producto-icono" aria-hidden="true">🍤</div>
+              <img class="producto-foto" src="https://i0.wp.com/revistademanabi.com/wp-content/uploads/2018/06/gastronomc3ada-mercado-los-esteros-arroz-marinero.jpeg?fit=1200%2C583&ssl=1" alt="Arroz marinero con mariscos y patacones" loading="lazy">
               <div class="producto-info">
                 <h4>Arroz marinero de Manabí</h4>
                 <p>Arroz preparado con variedad de mariscos y pescado, acompañado de patacones y limón.</p>
